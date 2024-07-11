@@ -1,36 +1,21 @@
 #include<iostream>
-#include<cstdio>
-
 using namespace std;
-int main()
-{
-    int Row,Colum;
-    cin>>Row>>Colum;
-    int arr[Row][Colum];
 
-    for(int i=0;i<Row;i++)
-    {
-        for(int j=0;j<Colum;j++)
-        {
-            cin>>arr[i][j];
-        }
-    }
+ int  searchMatrix(int matrix[][20], int rows, int cols, int x){
 
-    int X;
-    cin>>X;
-    int start=0,end=Row-1,mid;
+     int start=0,end=rows-1,mid;
     int r=-1;
     int c=-1;
 
     while(start<=end)
     {
         mid=(start+end)/2;
-        if(arr[mid][0]<=X && arr[mid][Colum-1]>=X)
+        if(matrix[mid][0]<=x && matrix[mid][cols-1]>=x)
         {
             r=mid;
             break;
         }
-        if(arr[mid][0]>X)
+        if(matrix[mid][0]>x)
             end=mid-1;
         else
         {
@@ -40,16 +25,16 @@ int main()
     if(r!=-1)
     {
         int start=0;
-        int end=Colum-1;
+        int end=cols-1;
         while(start<=end)
         {
             mid=(start+end)/2;
-            if(arr[r][mid]==X)
+            if(matrix[r][mid]==x)
             {
                 c=mid;
                 break;
             }
-            if(X<arr[r][mid])
+            if(x<matrix[r][mid])
             {
                 end=mid-1;
             }
@@ -67,5 +52,31 @@ int main()
     else {
         cout<<-1;
     }
+  
+   }
+int main()
+{
+    int rows,cols;
+    cout<<"Enter no. of rows:";
+    cin>>rows;
+    cout<<"Enter no. of column:";
+    cin>>cols;
+    int matrix[rows][20];
+ 
+   cout<<"Enter matrix elements:";
+    for(int i=0;i<rows;i++)
+    {
+        for(int j=0;j<cols;j++)
+        {
+            cin>>matrix[i][j];
+        }
+    }
+
+    int x;
+    cout<<"Enter search key:";
+    cin>>x; 
+
+   int result = searchMatrix(matrix, rows, cols, x);
+   
     return 0;
 }
