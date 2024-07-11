@@ -1,55 +1,53 @@
-#include<iostream>
+#include <iostream>
+#include <algorithm>
 using namespace std;
 
-
-
-
-
-int main()
+int specialArray(int nums[], int n)
 {
-int n,x;
- cout<<"Enter array size:";
- cin>>n;
+    sort(nums, nums + n);
 
- int nums[n];
- for(int i=0;i<n;i++)
- {
-   cin>>nums[i];
- }
+    int left = 0, right = n;
 
- //cout << binarysearch(nums, x, n) << endl;
- int binarysearch(int nums[], int x, int n){
-
-    int right = n, left = 0;
-
-   int mid = right - (right + left) / 2;
     while (left <= right)
-    {  int count=0;
+    {
+        int mid = left + (right - left) / 2;
+        int count = 0;
 
-        for(x=1;x<=n;x++)
- {
-        if (x>=nums[mid])
+        for (int i = 0; i < n; ++i)
         {
-            count++;
+            if (nums[i] >= mid)
+            {
+                count = n - i;
+                break;
+            }
         }
- }
-        if(nums[mid]==count)
+
+        if (count == mid)
         {
             return mid;
         }
-        else if (count<nums[mid])
+        else if (count < mid)
         {
-         right = mid - 1;
+            right = mid - 1;
         }
         else
-            {
-        left=mid+1;
+        {
+            left = mid + 1;
         }
+    }
 
     return -1;
 }
 
+int main()
+{
+
+    int nums[] = {0, 4, 3, 0, 4};
+
+    int n1 = sizeof(nums) / sizeof(nums[0]);
+
+    cout << "Value of x: " << specialArray(nums, n1) << endl;
+
     return 0;
 }
-}
-}
+
