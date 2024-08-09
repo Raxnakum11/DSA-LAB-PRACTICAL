@@ -2,19 +2,23 @@
 using namespace std;
 
 void bubble_sort(int arr[], int r) {
-    int count;
+    
+
     for(int i = 0; i < r; i++) {
-        count = 0;  // Reset count for each pass
+        int swaps = 0;  // Track swaps within each pass
         for(int j = 0; j < r - i - 1; j++) {
             if(arr[j] > arr[j+1]) {
                 swap(arr[j], arr[j+1]);
-                count++;
+                swaps++;
             }
         }
-        if(count == 0) {
+
+        if (i == 0 && swaps == 0) {  // If no swaps were made in the first pass
             cout << "Array is already sorted." << endl;
             break;
         }
+        
+        
     }
 
     for(int i = 0; i < r; i++) {
