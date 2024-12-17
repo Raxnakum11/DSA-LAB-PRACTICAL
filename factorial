@@ -1,0 +1,25 @@
+// C++ program to find factorial of a number using iteration
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    // number n whose factorial needs to be find
+    int count=0;
+    // initialize fact variable with 1
+    int n,fact = 1;
+    count++;
+    
+    cin>>n;
+    count++;
+    // loop calculating factorial
+    for (int i = 1; i <= n; i++) {
+        fact = fact * i;
+        count++;
+    }
+    // print the factorial of n
+    cout << "Factorial of " << n << " is " << fact << endl; count++;
+    count++; //counter for return
+    cout<<count;
+    return 0;
+}
